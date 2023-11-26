@@ -21,6 +21,7 @@ list_of_files = [
     "config/config.yaml",
     # "dvc.yaml",
     # "params.yaml",
+    '.gitignore',
     "dataset/.gitkeep"
     "app.py",
     "README.md",

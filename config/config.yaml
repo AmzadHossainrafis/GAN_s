@@ -10,6 +10,7 @@ Train_config:
   version : 1
   save_model: True
   save_at: 10
+  sample_step: 100
 
 Dir: 
   root: GAN_s 
@@ -18,17 +19,6 @@ Dir:
   model_load_path : artifects\
 
 
-Transform: 
-  train_transforms: 
-    - transforms.Resize(64)
-    - transforms.CenterCrop(64)
-    - transforms.ToTensor()
-    - transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
-  test_transforms: 
-    - transforms.Resize(64)
-    - transforms.CenterCrop(64)
-    - transforms.ToTensor()
-    - transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
 
 Generol_config : 
   feature_dis : 64
@@ -50,22 +40,11 @@ Discriminator:
     dropout: 0.5
   
 
-pre_process: 
-  - image_size: 64
-  - name: ToTensor
-    params: {}
-  - name: Normalize
-    params: 
-      mean: [0.5,0.5,0.5]
-      std: [0.5,0.5,0.5]
-  - name: Resize
-    params: 
-      size: 64
-  - name: CenterCrop
-    params: 
-      size: 64
+Pre_process: 
+  image_size: 64
+  in_channels: 3 
+  out_channels: 64
 
-```
 
 
 
