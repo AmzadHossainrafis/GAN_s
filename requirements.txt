@@ -1,0 +1,11 @@
+torch 
+torchvision
+albumentations
+tqdm
+flask 
+click
+matplotlib
+mlflow
+gunuicorn
+notbook
+-e . 

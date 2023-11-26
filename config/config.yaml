@@ -1,0 +1,73 @@
+Train_config: 
+  batch_size: 32
+  shuffle: True
+  num_workers: 4
+  pin_memory: True
+  drop_last: True
+  epochs: 100
+  lr: 0.001
+  model_name: gans 
+  version : 1
+  save_model: True
+  save_at: 10
+
+Dir: 
+  root: GAN_s 
+  dataset : data\humanface\
+  model_save_path : artifects\
+  model_load_path : artifects\
+
+
+Transform: 
+  train_transforms: 
+    - transforms.Resize(64)
+    - transforms.CenterCrop(64)
+    - transforms.ToTensor()
+    - transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
+  test_transforms: 
+    - transforms.Resize(64)
+    - transforms.CenterCrop(64)
+    - transforms.ToTensor()
+    - transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
+
+Generol_config : 
+  feature_dis : 64
+  feature_gen : 64
+  latent_dim : 100
+
+
+Discriminator: 
+  name: Discriminator
+  params: 
+    in_channels: 3
+    out_channels: 1
+    kernel_size: 4
+    stride: 2
+    padding: 1
+    bias: False
+    feature_dis: 64
+    batch_norm: True
+    dropout: 0.5
+  
+
+pre_process: 
+  - image_size: 64
+  - name: ToTensor
+    params: {}
+  - name: Normalize
+    params: 
+      mean: [0.5,0.5,0.5]
+      std: [0.5,0.5,0.5]
+  - name: Resize
+    params: 
+      size: 64
+  - name: CenterCrop
+    params: 
+      size: 64
+
+```
+
+
+
+
+
